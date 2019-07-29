@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Queue System</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <table class="table-striped">
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Action</th>
+            </thead>
+            {% for user in all_users %}
+            <tr>
+                <td>{{user.first_name}}</th>
+                <td>{{user.last_name}}</th>
+                <td>{{user.age}}</th>
+                <td><a href="/nq_user{{user.id}}">Enqueue</a>||<a href="dq_user{{user.id}}">Dequeue</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table class="table-striped">
+            <tr>
+                <form action="/create_user" method="POST">
+                    {% csrf_token %}
+                    <td><input type="text" name="fname"></th>
+                    <td><input type="text" name="lname"></th>
+                    <td><input type="text" name="age"></th>
+                    <input type="submit" value="Create User">
+                </form>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
